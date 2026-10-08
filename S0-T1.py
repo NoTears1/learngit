@@ -39,13 +39,12 @@ for line in data:
     #     error_lines.append(line)
     else:
         flag = True
-        for item in line:
-            if item == '':
-                error_line += 1
-                error_lines.append(line)
-                error_lines[-1].append('存在空字段')
-                flag = False
-                break
+        if line[0] == '':
+            error_line += 1
+            error_lines.append(line)
+            error_lines[-1].append('单据号为空')
+            flag = False
+            
         if flag == True:
             if line[1] in staff.keys():
                 staff[line[1]][0] += num
